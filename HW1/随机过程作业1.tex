@@ -1,0 +1,87 @@
+\documentclass{article}
+\input{../preamble}
+\begin{document}
+\title{Homework 1}
+\maketitle
+
+\section{Probability Space of Tossing Coins}
+\subsection*{\centering Problem 1}
+Obviously, $\varnothing\notin\{C_s\}_{\{0,1\}^n}$.
+\\
+By the fact that $C_s\subset\Omega$ and  $\mbox{Card}\qty(\{0,1\}^n)<+\infty$, we have $\bigcup_{s\in\{0,1\}^n}C_s\subset\Omega$.
+\\
+Also, $\forall\omega\in\Omega$, $\omega\in C_{(\omega_1, \dots,\omega_n)}$, which means $\Omega\subset\bigcup_{s\in\{0,1\}^n}C_s$.
+\\
+$\forall s_1,s_2\in\set{0,1}^n$, $\forall\omega_1\in C_{s_1}$ and $\omega_2\in C_{s_2}$, $\omega_1\ne \omega_2$. Then $C_{s_1}\cap C_{s_2}\ne \emptyset$.
+\\
+Finally, $\set{C_s}_{s\in\set{0,1}^n}$ forms a partition of  $\Omega$.
+
+\subsection*{\centering Problem 2}
+Firstly, I will prove a lemma and a proposition.
+\begin{lemma}
+	\label{fc}
+	If $\+C$ forms a partition of $\Omega$, then  $2^\+C$ is a  $\sigma$-algebra.
+\end{lemma}
+\begin{proof}
+		$\emptyset\in 2^\+C$.\\
+		If $A\in 2^\+C$, then $\Omega-A\subset\+C\Longrightarrow\Omega-A\in 2^\+C$.\\
+		If $A_i\in 2^\+C$, then $\bigcup_iA_i\subset\+C$, which means that $\bigcup_iA_i\in 2^\+C$.
+\end{proof}
+\begin{prp}
+	$\+F_n=2^{\+C_n}$ where $\+C_n={\set{C_s}_{s\in\set{0,1}^n}}$. 
+\end{prp}
+\begin{proof}
+	Trivially, $\+C_n\subset 2^{\+C_n}$. Now we suppose that $\exists$ $\sigma$-algebra  $\+F$ s.t. $\+C_n\subset\+F$:
+\\
+For all $A\in 2^{\+C_n}$, $A\subset\+C$. Then $A=\bigcup C_s$ for some $s$ or $A=\emptyset$. By the defination of $\sigma$-algebra, $A\in\+F$, which means  $2^{\+C_n}\in\+F$.
+\\
+Thus $2^{\+C_n}$ is the minimal  $\sigma$-algebra containing sets in $\+C$.
+\end{proof}
+Now we have $\text{Card}(\+F_n)=\text{Card}(2^{\+C_n})=\text{Card}(2^{\set{0,1}^n})=2^{2^n}$. We could say that $\+F_n\sim 2^{\set{0,1}^n}$ or $\+F_n$ and $2^{\set{0,1}^n}$ are \href{https://mathworld.wolfram.com/Equinumerous.html}{equinumerous}. So there exists a bijection between $\+F$ and  $2^{\set{0,1}^n}$.
+
+\subsection*{\centering Problem 3}
+By lemma \ref{fc}, $\forall n\in\NN$, $\+F_n=2^{\+C_n}$.
+
+And obviously $\+F_n\ne \+F_{n+1}$ because $\+C_n\ne \+C_{n+1}$ and $\text{Card}(\+C_n)\ne \text{Card}(\+C_{n+1})$.
+
+$\forall A\in\+F_n$, $A\subset\+C_n$. Assume that $A=\set{\omega\in\Omega\mid\omega_1=s_1, \cdots, \omega_n=s_n}$. Then
+\[
+	\set{\omega\in\Omega\mid\omega_1=s_1, \cdots, \omega_n=s_n,\omega_{n+1}=0}
+	\cup
+	\set{\omega\in\Omega\mid\omega_1=s_1, \cdots, \omega_n=s_n,\omega_{n+1}=1}
+	=A
+,\]
+where the 2 elements of LHS are in $\+C_{n+1}$. Thus  $A\in\+C_{n+1}$.
+
+Ultimately $\forall n\in\NN$, $\+F_n=2^{\+C_n}\subsetneq 2^{\+C_{n+1}}=\+F_{n+1}$.
+
+\subsection*{\centering Problem 4}
+By defination, $\+F_\infty=\bigcup_{n\ge 1}\+F_n$.
+
+For all $A,B\in\+F_\infty$, $\exists m,n\in\NN$, $A\in\+F_m$ and $B\in\+F_n$. Let  $l\deq\max(m,n)$. Then  $A,B\in\+F_l$.
+
+Thus $A^c,B^c\in\+F_l$ and  $A+B\in\+F_l\Longrightarrow A^c,B^c,A+B\in\+F_l$.
+
+The proposition that $F_\infty$ is an algebra holds.
+
+\begin{lemma}
+	$\forall\omega\in\Omega$, $\forall n\in\NN$, $\omega\notin\+F_n$.
+	\label{wf}
+\end{lemma}
+\begin{proof}
+	$\forall A\in\+F_n$, $\card{A}=+\infty\ne \card{\set{\omega}}=1$
+\end{proof}
+Thus $2^{\Omega}\ne\+F_\infty$.
+
+
+\subsection*{\centering Problem 5}
+By lemma \ref{wf}, we have $\set{\omega}\ne\+F_\infty$. If not, there exists $n\in\NN$ such that  $\omega\notin\+F_n$, which lead to a contradiction.
+Now we just need to prove that  $\set{\omega}\in\+B(\Omega)$.
+
+
+
+\subsection*{}
+\subsection*{}
+
+\end{document}
+
