@@ -18,42 +18,49 @@ Finally, $\set{C_s}_{s\in\set{0,1}^n}$ forms a partition of  $\Omega$.
 
 \subsection*{\centering Problem 2}
 Firstly, I will prove a lemma and a proposition.
+\begin{defi}
+	$\+S(\+C)\deq\set{\bigcup_{i=1, \ldots,m} A_i\mid m\in\set{1, \cdots,\abs{\+C}},A_i\in \+C}\cup\set{\emptyset}$
+\end{defi}
 \begin{lemma}
 	\label{fc}
-	If $\+C$ forms a partition of $\Omega$, then  $2^\+C$ is a  $\sigma$-algebra.
+	If $\+C$ forms a partition of $\Omega$, then $\+S(\+C)$ is a  $\sigma$-algebra.
 \end{lemma}
 \begin{proof}
-		$\emptyset\in 2^\+C$.\\
-		If $A\in 2^\+C$, then $\Omega-A\subset\+C\Longrightarrow\Omega-A\in 2^\+C$.\\
-		If $A_i\in 2^\+C$, then $\bigcup_iA_i\subset\+C$, which means that $\bigcup_iA_i\in 2^\+C$.
+	$\emptyset,\Omega\in\+S(\+C)$.
+	\\
+	If $a\in\+S(\+C)$, then for some $B_i\in\+C$, $a=\bigcup_i B_i$. 
+	Thus $\Omega-a=\bigcup_{A_i\in\+C} A_i-s\in\+S(\+C)$.
+	\\
+	If $A_i\in \+S(\+C)$, then $\bigcup_iA_i=\bigcup_i\qty(\bigcup_j B_{ij})\in\+S(\+C)$.
 \end{proof}
+\begin{defi}
+	 $\+C_n={\set{C_s}_{s\in\set{0,1}^n}}$. 
+\end{defi}
 \begin{prp}
-	$\+F_n=2^{\+C_n}$ where $\+C_n={\set{C_s}_{s\in\set{0,1}^n}}$. 
+	$\+F_n=\+S({\+C_n})$.
 \end{prp}
 \begin{proof}
-	Trivially, $\+C_n\subset 2^{\+C_n}$. Now we suppose that $\exists$ $\sigma$-algebra  $\+F$ s.t. $\+C_n\subset\+F$:
+	Trivially, $\+C_n\subset\+S(\+C_n)$. Now we suppose that $\exists$ $\sigma$-algebra  $\+F$ s.t. $\+C_n\subset\+F$:
 \\
-For all $A\in 2^{\+C_n}$, $A\subset\+C$. Then $A=\bigcup C_s$ for some $s$ or $A=\emptyset$. By the defination of $\sigma$-algebra, $A\in\+F$, which means  $2^{\+C_n}\in\+F$.
+For all $A\in\+S(\+C_n)$. Then $A=\bigcup C_s$ for some $s$ or $A=\emptyset$. By the defination of $\sigma$-algebra, $A\in\+F$, which means  $\+S(\+C_n)\in\+F$.
 \\
-Thus $2^{\+C_n}$ is the minimal  $\sigma$-algebra containing sets in $\+C$.
+Thus $\+S(\+C_n)$ is the minimal  $\sigma$-algebra containing sets in $\+C_n$.
 \end{proof}
-Now we have $\text{Card}(\+F_n)=\text{Card}(2^{\+C_n})=\text{Card}(2^{\set{0,1}^n})=2^{2^n}$. We could say that $\+F_n\sim 2^{\set{0,1}^n}$ or $\+F_n$ and $2^{\set{0,1}^n}$ are \href{https://mathworld.wolfram.com/Equinumerous.html}{equinumerous}. So there exists a bijection between $\+F$ and  $2^{\set{0,1}^n}$.
+Now we have $\text{Card}(\+F_n)=\card{\+S(\+C_n)}=\text{Card}(2^{\+C_n})=\text{Card}(2^{\set{0,1}^n})=2^{2^n}$. We could say that $\+F_n\sim 2^{\set{0,1}^n}$ or $\+F_n$ and $2^{\set{0,1}^n}$ are \href{https://mathworld.wolfram.com/Equinumerous.html}{equinumerous}. So there exists a bijection between $\+F$ and  $2^{\set{0,1}^n}$.
 
 \subsection*{\centering Problem 3}
-By lemma \ref{fc}, $\forall n\in\NN$, $\+F_n=2^{\+C_n}$.
+By lemma \ref{fc}, $\forall n\in\NN$, $\+F_n=\+S(\+C_n)$.
 
 And obviously $\+F_n\ne \+F_{n+1}$ because $\+C_n\ne \+C_{n+1}$ and $\text{Card}(\+C_n)\ne \text{Card}(\+C_{n+1})$.
 
-$\forall A\in\+F_n$, $A\subset\+C_n$. Assume that $A=\set{\omega\in\Omega\mid\omega_1=s_1, \cdots, \omega_n=s_n}$. Then
+$\forall A\in\+F_n$, $A=\bigcup_i C_{s_i}$ where $s_i\in\set{0,1}^n$. Then
 \[
-	\set{\omega\in\Omega\mid\omega_1=s_1, \cdots, \omega_n=s_n,\omega_{n+1}=0}
-	\cup
-	\set{\omega\in\Omega\mid\omega_1=s_1, \cdots, \omega_n=s_n,\omega_{n+1}=1}
-	=A
+	A=
+	\bigcup_i \qty(C_{[s_i,0]}\cup C_{[s_i,1]})
 ,\]
-where the 2 elements of LHS are in $\+C_{n+1}$. Thus  $A\in\+C_{n+1}$.
+where the operator $[\cdot,\cdot]$ means a concatenation. For example, $[(0,0,1),1]=(0,0,1,1)$ and $[(0,0,1),(0,1)]=(0,0,1,0,1)$. I also use this operator in Problem 6 and 7.
 
-Ultimately $\forall n\in\NN$, $\+F_n=2^{\+C_n}\subsetneq 2^{\+C_{n+1}}=\+F_{n+1}$.
+Ultimately $\forall n\in\NN$, $\+F_n=\+S(\+C_n)\subsetneq \+S(\+C_{n+1})=\+F_{n+1}$.
 
 \subsection*{\centering Problem 4}
 By defination, $\+F_\infty=\bigcup_{n\ge 1}\+F_n$.
@@ -65,7 +72,7 @@ Thus $A^c,B^c\in\+F_l$ and  $A+B\in\+F_l\Longrightarrow A^c,B^c,A+B\in\+F_l$.
 The proposition that $F_\infty$ is an algebra holds.
 
 \begin{lemma}
-	$\forall\omega\in\Omega$, $\forall n\in\NN$, $\omega\notin\+F_n$.
+	$\forall\omega\in\Omega$, $\forall n\in\NN$, $\set{\omega}\notin\+F_n$.
 	\label{wf}
 \end{lemma}
 \begin{proof}
@@ -75,13 +82,182 @@ Thus $2^{\Omega}\ne\+F_\infty$.
 
 
 \subsection*{\centering Problem 5}
-By lemma \ref{wf}, we have $\set{\omega}\ne\+F_\infty$. If not, there exists $n\in\NN$ such that  $\omega\notin\+F_n$, which lead to a contradiction.
+By lemma \ref{wf}, we have $\set{\omega}\ne\+F_\infty$.
+% If not, there exists $n\in\NN$ such that  $\omega\notin\+F_n$, which lead to a contradiction.
 Now we just need to prove that  $\set{\omega}\in\+B(\Omega)$.
+% Intuitively, $\+B(\Omega)=2^\Omega$.
+
+\textbf{Proof by contradiction.} Suppose that $\exists\omega'\notin\+B(\Omega)$.
+
+$\forall n\in\NN$, $\+F_n\in\+B(\Omega)$.
+
+A creative construction:
+ \[
+	 T\deq\bigcup_{n=1, \ldots, \infty}
+	\set{\omega\mid\omega_1\ne\omega_1'\land\cdots\land\omega_n\ne\omega_n'}
+	\deq\bigcup_{n=1, \ldots, \infty}T_n
+.\] 
+
+Here $T$ is a countable union and every $S_n$ is in  $\+S(\+C_n)=\+F_n$ ($T_n\in\+B(\Omega)$).
+Hence $T\in\+B(\Omega)$. Intuitively,  $T=\Omega-{\omega}$.
+
+Finnaly, $\set{\omega}=T^c\in\+B(\Omega)$.
 
 
+\subsection*{\centering Problem 6}
 
-\subsection*{}
-\subsection*{}
+For all $A\in\+F_\infty$,  $\exists m(A)\in\NN$ such that $A\in\+F_{m(A)}$ and  $\forall n\in\set{1,2, \cdots, m(A)-1}$, $A\notin\+F_n$. For simplicity, we denote  $m(A)$ as  $m$. It is worthy of mention that  $m$ \textbf{only} depends on  $A$.
+
+Now we want to prove $\forall n\ge m$, $2{k_n}=k_{n+1}$.
+
+If $A=C_{s_1}\cup\cdots\cup C_{s_{k_n}}$, then
+\[
+    A=
+	\qty(C_{[s_1,0]}\cup C_{[s_1,1]})\cup\cdots\cup\qty(C_{[s_{k_n},0]}\cup C_{[s_{k_n},1]})
+.\]
+
+Trivially, $[s_1,0]\ne [s_1,1]\ne\cdots\ne[s_{n_k},0]\ne[s_{n_k},1]$. Thus we conclude $k_{n+1}=2k_n$ and  $\flatfrac{k}{2^n}=Const$ for any fixed  $A$.
+
+\newpage
+\subsection*{\centering Problem 7}
+I've talked with Liyuan Mao and Wei Jiang for days. Here I will give several attempts I make, though I could not prove the proposition successfully.
+
+\textcolor{blue}{\textbf{Attempt 1.}}
+\begin{lemma}
+	$\forall$ set $A$ and set $B$, $A\cap B=A-(A-B)=A-(A^c\cup B)^c=\qty[A^c\cup\qty(A^c\cup B)^c]^c$.
+\end{lemma}
+\begin{prp}
+	$\+B(\Omega)=\set{\eval{\bigcup_{i=1}^\infty\qty(\bigcap_{j=1}^\infty A_{ij})}\, A_{ij}\in\+F_\infty}$.
+\end{prp}
+\begin{proof}
+	Obviously, $\emptyset\in\+B(\Omega)$.
+	
+	$\forall A\in\+B(\Omega)$:
+	$A^c=\qty[\bigcup_{i=1}^\infty\qty(\bigcap_{j=1}^\infty A_{ij})]^c=\bigcap_{i=1}^\infty\qty(\bigcup_{j=1}^\infty A_{ij}^c)$. (\textcolor{red}{Failure.} I could not prove this.)
+\end{proof}
+
+\textbf{Remark} of the \textbf{attempt 1}:
+I want to construct $\+B$ directly, while I could not prove this set is a  $\sigma$-algebra. The idea is intuitively from  $\forall A\in \+B$, $A$ could be generated from  $C_{s_n}$ and  ${\omega_n}$.
+\\
+\\
+\textcolor{blue}{\textbf{Attempt 2.}}
+$\forall A\in\+B(\Omega)$:
+
+$P_n(A)\deq P_n(\bigcup A_i)$ where $A_i\in F_n$ and $\bigcup A_i\mbox{ is the smallest cover of }A$. Then define $P(A)=\lim_{n\to\infty}P_n(A)$. (It is obvious that $P(A)$ is bounded and decreasing.)
+
+\textcolor{red}{Hoever}, I could not prove the uniqueness of $P(A)$.
+\\
+\\
+\textcolor{blue}{\textbf{Finally.}}
+
+I find a more general theorem called Caratheodory's extension theorem. In this theorem we could find several creative constructions:
+\[
+	\lambda(E)\deq\inf\set{\sum_{j=1}^\infty\Pr(A_j):A_j\in\+F,E\subset\bigcup_j A_j}
+\] and 
+\[
+	\bar{\+F}\deq\set{E:\lambda(F)=\lambda(F\cap E)+\lambda(F\cap E^c)\ \forall F\subset\Omega}
+.\] 
+\textbf{Final remark:} I found the similarity between the defination of $P_n(A)$ in Attempt 2 and  $\lambda(E)$.
+
+Reference: \href{https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-436j-fundamentals-of-probability-fall-2018/lecture-notes/MIT6_436JF18_lec02.pdf}{Fundamentals of Probability, MIT}.
+
+\subsection*{\centering Problem 8}
+
+Let $G_n=\set{\eval{\omega}\omega_1=\omega_2=\cdots=\omega_{n-1}=0,\omega_n=1 \mbox{ and } \omega\in\Omega}$ and $\Omega^*=\set{G_i}_{i\in\NN^+}$.
+
+Then $X:\Omega^\mapsto \RR$, $X(\omega)=n$ such that $\omega\in G_n$.
+Obviously $P(X=n)=\Pr(G_n)=\flatfrac{1}{2^n}$.
+
+
+\section{Conditional Expectation}
+\subsection*{\centering Problem 1}
+$\forall A\in\+B$: $X^{-1}(A)=\set{\eval{\omega}X(\omega)\in A}\in\sigma(X)$ and $f^{-1}(A)\in\+B$.
+
+Now we have $\+G\deq\set{\eval{X(\omega)}f(X(\omega))\in A}\in\+B$.
+Thus 
+\[
+	\qty[f(X)]^{-1}(A)=\set{\eval{\omega}f(X(\omega))\in A}=\set{\eval{\omega}X(\omega)\in\+G}\in\sigma(X)
+\]
+which means that $f(X)$ is $\sigma(X)$-measurable.
+
+\subsection*{\centering Problem 2}
+
+\begin{prp}
+	\label{sy}
+	$\forall\omega\in\Omega$, $\exists A\in\sigma(Y)$ such that $Y^{-1}(\omega)=A$ and $\forall B\in\sigma(Y):A\cap B=\emptyset \lor A\subset B$.
+\end{prp}
+\begin{proof}
+	If not, then $\exists B\ne\emptyset$, $A\cap B\ne A$. Let $A_1=A\cap B,A_2=A\cup B^c$. $A_1,A_2\in\sigma(Y)$ such that $A_1\cup A_2=Y^{-1}(\omega)$ and $A_1\cap A_2=\emptyset$. Obviously $\sigma(Y)$ is \textbf{not} the minimal $\sigma$-algebra such that Y is $\sigma(Y)$-measurable. Contradiction.
+\end{proof}
+
+Then $\forall \omega\in\Omega$, $Y^{-1}\qty[Y(\omega)]=Y'^{-1}\qty[Y'(\omega)]$. (If not, let  $B=Y^{-1}\qty[Y(\omega)]\cap Y'^{-1}\qty[Y'(\omega)]$. Then $B$ is a set which contradicts the Proposition \ref{sy}.
+
+
+\subsection*{\centering Problem 3}
+
+$\expect[X\mid\+F]=\expect[X\mid Y]$ where $\sigma(Y)=\+F$.
+
+\textbf{Remark:} after I finnished Problem 3 and 4 I found that the existence of $Y$ may not always hold for every $\+F$. The existence of $Y$ depends on whether  $\+F$ has partitions, (i.e., if we could find the partitions of $\+F$, then we have a  $Y$). Hoever, for more general cases I could not define it clealy (may use Lebergue Integral).
+\subsection*{\centering Problem 4}
+
+Suppose that  $\sigma(Y_1)=\+F_1$ and $\sigma(Y_2)=\+F_2$.
+
+\begin{equation}
+	\begin{aligned}
+		\expect[\expect[ X\mid\+F_1]\mid\+F_2](\omega_0)
+		&=\sum_{a\in\text{Ran}(f_Y)}a\times\Pr[f_{Y_1}=a\mid Y_2=Y_2(\omega_0)]
+		\\&=
+		f_{Y_1}(\omega_0)\times\Pr[f_{Y_1}=f_{Y_1}(\omega_0)\mid Y_2=Y_2(\omega_0)]
+		\\&=
+		f_{Y_1}(\omega_0)
+	\end{aligned}
+	\label{e_1}
+\end{equation}
+
+The second euqality of Eq.\ref{e_1} holds by the fact that:
+\[
+	\forall\omega\mbox{ such that }a=f_{Y_1}(\omega)\ne f_{Y_1}(\omega_0)\mbox{, }\qty[f_{Y_1}=a]\cap\qty[Y_2=Y_2(\omega_0)]=\emptyset
+.\]
+
+The third euqality of Eq.\ref{e_1} holds by the fact that:
+\[
+	[Y_2=Y_2(\omega_0)]\subset[f_{Y_1}=f_{Y_1}(\omega_0)]
+.\] 
+
+Let $\+D_0\deq \set{b\in\RR\mid \exists \omega\in\Omega \mbox{ such that } Y_2^{-1}(Y_2(\omega))\subset Y_1^{-1}(Y_1(\omega))\mbox{ and } b=f_{Y_2}(\omega)}$. The interpretation of $\+D_0$: $\forall A\in\sigma(Y_1)$, there exsists serveral sets $A_i\in\sigma(Y_2)$ such that $\bigcup A_i=A$. Here we let $A=Y_1^{-1}(\omega)$ and $\set{A_i}$ is the partition of $\sigma(Y_2)$.
+
+\begin{equation}
+	\begin{aligned}
+		\expect[\expect[X\mid Y_2]\mid Y_1](\omega_0)
+		&=
+		\frac{\sum_{b\in\mathrm{Ran}(f_{Y_2})}b\times\Pr(f_{Y_2}=b\cap Y_1=Y_1(\omega_0))}
+		{\Pr(Y_1=Y_1(\omega))}
+		\\[5pt]&=
+		\frac{\sum_{b\in\+D_0}b\times\Pr(f_{Y_2}=b\cap Y_1=Y_1(\omega_0))}
+		{\Pr(Y_1=Y_1(\omega))}
+		\\[5pt]&=
+		\frac{\sum_{b\in\+D_0}\expect(X\mid Y_2=Y_2(\omega_b))\Pr(f_{Y_2}=b)}
+		{\Pr(Y_1=Y_1(\omega))}
+		\\[5pt]&=
+		\frac{\sum_{b\in\+D_0}\expect(X\mid Y_2=Y_2(\omega_b))\Pr({Y_2}=Y_2(\omega_b))}
+		{\Pr(Y_1=Y_1(\omega))}
+		\\[5pt]&=
+		\frac{\sum_{b\in\+D_0}\sum_a\expect(X=a\mid Y_2\cap Y_2(\omega_b))}
+		{\Pr(Y_1=Y_1(\omega))}
+		\\[5pt]&=
+		\frac{\sum_a\sum_{b\in\+D_0}\expect(X=a\mid Y_2\cap Y_2(\omega_b))}
+		{\Pr(Y_1=Y_1(\omega))}
+		\\[5pt]&=
+		\frac{\sum_a\Pr(X=a\cap Y_1=Y_1(\omega_0))}
+		{\Pr(Y_1=Y_1(\omega))}
+		\\[5pt]&=
+		f_{Y_1}(\omega_0)
+	\end{aligned}
+	\label{e_2}
+\end{equation}
+
+Ultimately, with EQ. \ref{e_1} and EQ. \ref{e_2} we prove the proposition of problem 4.
+
 
 \end{document}
 

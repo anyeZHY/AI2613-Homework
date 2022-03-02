@@ -51,6 +51,7 @@
 \def\+#1{\mathcal{#1}} 
 \def\-#1{\bar{#1}}
 % Domains
+\def\expect{\mathbb{E}}
 \def\RR{\mathbb{R}}
 \def\CC{\mathbb{C}}
 \def\NN{\mathbb{N}}
@@ -71,12 +72,12 @@
 \def\LHS{\text{LHS}}
 \def\RHS{\text{RHS}}
 \def\angbr#1{\langle#1\rangle} % <x>
-\newcommand\set[1]{\{#1\}}
+\newcommand\set[1]{\qty{#1}}
 
 \def\Esolve{\textcolor{blue}{Solve: }}
 \def\Eproof{\textcolor{blue}{Proof: }}
 \def\case#1{\textcolor{blue}{Case \uppercase\expandafter{\romannumeral#1}: }}
-\def\card#1{\text{Card}(#1)}
+\def\card#1{\mbox{Card}(#1)}
 
 % \newmdtheoremenv{lemma}{Lemma}
 % \newmdtheoremenv{theorem}{\textcolor{red}{Theorem}}
@@ -84,6 +85,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{prp}{Proposition}
 \newtheorem{thm}{Theorem}
+\newtheorem{defi}{Defination}
 
 \newenvironment{md}{\begin{mdframed}}{\end{mdframed}}
 
