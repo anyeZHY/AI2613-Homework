@@ -8,7 +8,7 @@
 % \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{amsthm}
 %边界
-\usepackage[letterpaper,top=2cm,bottom=3cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}%table package
+\usepackage[letterpaper,top=2.5cm,bottom=2.5cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}%table package
 %Table
 \usepackage{multirow,booktabs}
 \usepackage{makecell}
@@ -88,6 +88,22 @@
 \newtheorem{defi}{Defination}
 
 \newenvironment{md}{\begin{mdframed}}{\end{mdframed}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% \fancypagestyle{mainFancy}{
+%     \fancyhf{}
+%     \renewcommand\headrulewidth{.5pt}       % 页眉横线
+%     \renewcommand\footrulewidth{0pt}
+%     \fancyhead[OC]{\fzkai{\leftmark}}       % 页眉章标题
+%     \fancyhead[EC]{\fzkai{\@title}}         % 页眉文章题目
+% 	\lhead{\fzkai{author}}
+%     \fancyhead[OR,EL]{\thepage}                 % 页眉编号
+%     \fancyfoot[r]{\thumb} % 将拇指放到没有被使用的页眉或页脚处
+% }
+\fancyhf{}
+\fancyhead[L]{\slshape{Haoyu Zhen}}
+\fancyfoot[C]{\thepage}
+\fancyhead[R]{\slshape{Available at \href{https://github.com/anyeZHY/AI2613-Homework}{https://github.com/anyeZHY/AI2613-Homework}}}
 
 \graphicspath{{figures/}}
 

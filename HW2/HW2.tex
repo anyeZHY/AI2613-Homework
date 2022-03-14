@@ -1,0 +1,188 @@
+% ! Tex program = xelatex
+\documentclass{article}
+% 中文
+% \usepackage[UTF8]{ctex}
+
+% For more choices
+% \input{/Users/anye_zhenhaoyu/Desktop/preamble.tex}
+% \input{/Users/anye_zhenhaoyu/Desktop/ln_preamble.tex}
+
+% \input{/path/preamble.tex}
+% \input{/path/ln_preamble.tex}
+
+% On my MAC's Desktop
+\input{../preamble}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+% \tableofcontents
+\title{Homework 2}
+\maketitle
+\section{Optimal Coupling}
+Assume $\Omega=\qty{1,2, \cdots,n}$.
+Our goal is to fill the $n\times n$ probabilty table, which means we need to determine every value of $P_{i,j}$ such that
+\begin{equation}
+	\sum_i P(i,j)=\nu(j)\mbox{ and }\sum_j P_{i,j}=\mu(i)
+	\label{constrain}
+\end{equation}
+
+Constructe $\*P$ as follows:
+\begin{enumerate}
+	\item
+	      Let $\Pr_{(X,Y)\sim \omega}(X=Y=i)=\min[\mu(i),\nu(i)]$.
+	\item
+	      Then
+	      \[
+		      \mbox{If }i\ne j,\ P_{i,j}=\frac{(\mu(i)-P_{i,i})(\nu(j)-P_{j,j})}{1-\sum_k{P_{k,k}}}
+		      .\]
+\end{enumerate}
+Reference: \href{https://courses.cs.duke.edu/spring13/compsci590.2/slides/lec5.pdf}{Markov Chains and Coupling, Duke University}. And the proof is not mentioned in this lecture notes.
+
+Now we want to prove that the construction satisfies the EQ. \ref{constrain}.
+If $\nu(i)=P_{i,i}$:
+\[
+	\begin{aligned}
+		 & P_{i,i}+
+		\sum_{j\ne i}\frac{(\mu(i)-P_{i,i})(\nu(j)-P_{j,j})}{1-\sum_k{P_{k,k}}}
+		\\[5pt]=&
+		P_{i,i}+
+		(\mu(i)-P_{i,i})\frac{\sum_{j\ne i}(\nu(j)-P_{j,j})}{1-\sum_k{P_{k,k}}}
+		\\[5pt]=&
+		P_{i,i}+
+		(\mu(i)-P_{i,i})\frac{\sum_{j}(\nu(j)-P_{j,j})}{1-\sum_k{P_{k,k}}}
+		\\[5pt]=&
+		P_{i,i}+
+		(\mu(i)-P_{i,i})\frac{1-\sum_{j}P_{j,j}}{1-\sum_k{P_{k,k}}}
+		\\[5pt]=&
+		\mu(i)
+	\end{aligned}
+	.\]
+If $\mu(i)=P_{i,i}$, obviously  $\sum_jP_{i,j}=P_{i,i}=\mu(i)$. Similarly,  $\sum_iP_{i,j}=\nu(j)$. And the EQ.\ref{constrain} holds.
+
+Thus
+\[
+	\Pr_{(X,Y)\sim\omega}[X\ne Y]=1-\sum_i\min(\mu(i),\nu(i))=\sum_i\qty[\mu(i)-\min(\mu(i),\nu(i))]=\max_{A\subset\Omega}\qty|\mu(A)-\nu(A)|=D_{TV}(\mu,\nu)
+	.\]
+
+\newpage
+\section{Stochastic Dominance}
+\subsection*{Problem 1}
+``$\Longrightarrow$'': $\Pr[X=n]\ge \Pr[Y=n]$, which means that $p^n\ge q^n$. Thus $p\ge q$.
+\\\\
+``$\Longleftarrow$'', if $p\ge q$:
+
+For simplicity, $\Pr[X\ge k]-\Pr[Y\ge k]\defeq A_k$. $A_0=0$ and $A_n=p^n-q^n$.
+Then
+\[
+	A_{k+1}-A_{k}=q^k(1-q)^{n-k}-p^k(1-p)^{n-k}
+	.\]
+Let $\displaystyle k_0=\frac{n\log(\flatfrac{1-q}{1-p})}{\log[\flatfrac{p(1-q)}{q(1-p)}]}$.
+\\[9pt]
+If $k\le k_0$, then $A_{k+1}-A_k\ge 0$. And if $k_0\le k\le n$,
+then $A_{k+1}-A_k\le 0.$
+\\[6pt]
+Thus $0=A_0\nearrow A_{k_0}\searrow A_{n}=p^n-q^n>0$ for some $k_0$, which means that $A_k>0$.
+\\[6pt]
+Finally \[\Pr[X\ge k]-\Pr[Y\ge k]\ge 0.\]
+
+\subsection*{Problem 2}
+Assume $\Omega=\qty{1,2, \cdots,n}$.
+\\\\
+``$\Longleftarrow$'': $P_{i,j}$ denote  $\omega(i,j)$.  $P_{i,j}=0$ if  $j>i$.
+\[
+	\begin{aligned}
+		\Pr[X\ge k]=\sum_{i=k}^n\sum_{j=0}^iP_{i,j}
+		\le
+		\sum_{i=k}^n\sum_{j=k}^iP_{i,j}
+		=
+		\sum_{j=k}^i\sum_{i=k}^nP_{i,j}
+		=
+		\sum_{j=k}^n\sum_{i=0}^jP_{i,j}
+		=
+		\Pr[Y\ge k]
+	\end{aligned}
+	.\]
+
+``$\Longrightarrow$'':
+
+Design the coupling by the following steps:
+\begin{enumerate}
+	\item
+	      $\forall i,j,\,\,P_{i,j}=0$.
+	\item
+	      Let  $(i,j)$ traverse: $(1,1),(2,1),(2,2),(3,1),(3,2),(3,3)\cdots,(n,n)$ and update  $P_{i,j}$:
+	      \[
+		      P_{i,j}=\min\qty{\qty[\mu(i)-\sum_{k=1}^iP_{i,k}],\,\qty[\nu(j)-\sum_{k=i}^jP_{k,j}]}
+		      .\]
+\end{enumerate}
+For any $i$:
+
+If $\exists j$, $P_{i,j}=\mu(i)-\sum_{k=1}^iP_{i,k}$, then $\sum_jP_{i,j}=\mu(i)$.
+
+If not, then $\forall j,\, P_{i,j}=\nu(j)-\sum_{k=i}^jP_{k,j}$, which means $\sum_{k=i+1}^n\mu(k)=\sum_{k=i+1}^n\nu(k)$. Thus
+\[
+	\begin{aligned}
+		\sum_{j=1}^nP_{i,j}
+		&=
+		\sum_{j=1}^iP_{i,j}
+		=
+		\sum_{j=1}^i\qty[\nu(j)-\sum_{k=i}^jP_{k,j}]
+		\\[5pt]&=
+		\sum_{k=1}^i\nu(j)-\sum_{k=1}^{i-1}\mu(k)
+		=
+		\sum_{k=1}^i\mu(j)-\sum_{k=1}^{i-1}\mu(k)
+		\\[5pt]&=
+		\mu(i)
+	\end{aligned}
+.\]
+
+\subsection*{Problem 3}
+I refer to the \href{http://chihaozhang.com/teaching/SP2021spring/notes/lec5-SP2021Spring.pdf}{lecture notes} last year.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|cc|c}
+		& Not Connected & Connected & $G$
+		\\ \hline
+		Not Connected & $P_{11}$ & $P_{12}$ & $\Pr[\mbox{G is not connected}]$
+		\\
+		Connected & $P_{21}$ & $P_{22}$ & $\Pr[\mbox{G is connected}]$
+		\\ \hline
+		$H$ & $\Pr[\mbox{H is not connected}]$ & $\Pr[\mbox{H is connected}]$ &
+	\end{tabular}
+\end{table}
+
+We generate $G\sim\+G(n,p)$ and $H\sim\+G(n,q)$ simultaneously. Let $r\sim\mathrm{U}(0,1)$. For every edge $(u,v)$:
+\[
+    \begin{cases}
+		(u,v) \mbox{exisits in $G$ and $H$} &\mbox{if }r\in[0,q]
+		\\
+		(u,v) \mbox{exisits only in $G$} &\mbox{if }r\in(q,p]
+		\\
+		(u,v) \mbox{does not exisit} &\mbox{if }r\in(p,1]
+    \end{cases}
+.\]
+Then for all $H$,  $H$ is the subgraph of $G$, which means that $P_{12}=0$. By 2 we have 
+\[
+	\Pr_{G\sim\+G(n,p)}\qty[\mbox{G is connected}]\ge\Pr_{H\sim\+G(n,q)}\qty[\mbox{H is connected}].
+\]
+
+\section{Total Variation Distance is Non-Increasing}
+
+By coupling lemma, for every $X^t\sim\mu^t$ and  $Y^t\sim\pi$, we have a coupling such that  $\Delta(t)=\Pr(X^t\ne Y^t)$. Then we construct $X^{t+1}$ and  $Y^{t+1}$ by following rules:
+ \[
+	 \begin{cases}
+		 X^{t+1}=X^t\mbox{ and }Y^{t+1}=Y^t & \mbox{, if }X^t=Y^t
+		 \\
+		 X^t\to X^{t+1}\mbox{ and }Y^t\to Y^{t+1} \mbox{ \textbf{independently}} & \mbox{, otherwise}
+	 \end{cases}	 
+.\] 
+Thus
+\[
+	\Delta(t+1)\le \Pr(X^{t+1}\ne y^{t+1})\le\Pr(X^{t}\ne Y^{t})=\Delta(t)
+.\] 
+Reference: \href{https://courses.cs.duke.edu/spring13/compsci590.2/slides/lec5.pdf}{Markov Chains and Coupling, Duke University}.
+
+
+\end{document}

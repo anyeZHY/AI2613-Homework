@@ -145,7 +145,7 @@ $\forall A\in\+B(\Omega)$:
 
 $P_n(A)\deq P_n(\bigcup A_i)$ where $A_i\in F_n$ and $\bigcup A_i\mbox{ is the smallest cover of }A$. Then define $P(A)=\lim_{n\to\infty}P_n(A)$. (It is obvious that $P(A)$ is bounded and decreasing.)
 
-\textcolor{red}{Hoever}, I could not prove the uniqueness of $P(A)$.
+\textcolor{red}{However}, I could not prove the uniqueness of $P(A)$.
 \\
 \\
 \textcolor{blue}{\textbf{Finally.}}
@@ -163,9 +163,9 @@ Reference: \href{https://ocw.mit.edu/courses/electrical-engineering-and-computer
 
 \subsection*{\centering Problem 8}
 
-Let $G_n=\set{\eval{\omega}\omega_1=\omega_2=\cdots=\omega_{n-1}=0,\omega_n=1 \mbox{ and } \omega\in\Omega}$ and $\Omega^*=\set{G_i}_{i\in\NN^+}$.
+Let $G_n=\set{\eval{\omega}\omega_1=\omega_2=\cdots=\omega_{n-1}=0,\omega_n=1 \mbox{ and } \omega\in\Omega}$ and $\Omega=\bigcup_i{G_i}$.
 
-Then $X:\Omega^\mapsto \RR$, $X(\omega)=n$ such that $\omega\in G_n$.
+Then $X:\Omega\mapsto \RR$, $X(\omega)=n$ if $\omega\in G_n$.
 Obviously $P(X=n)=\Pr(G_n)=\flatfrac{1}{2^n}$.
 
 
@@ -197,7 +197,7 @@ Then $\forall \omega\in\Omega$, $Y^{-1}\qty[Y(\omega)]=Y'^{-1}\qty[Y'(\omega)]$.
 
 $\expect[X\mid\+F]=\expect[X\mid Y]$ where $\sigma(Y)=\+F$.
 
-\textbf{Remark:} after I finnished Problem 3 and 4 I found that the existence of $Y$ may not always hold for every $\+F$. The existence of $Y$ depends on whether  $\+F$ has partitions, (i.e., if we could find the partitions of $\+F$, then we have a  $Y$). Hoever, for more general cases I could not define it clealy (may use Lebergue Integral).
+\textbf{Remark:} after I finnished Problem 3 and 4 I found that the existence of $Y$ may not always hold for every $\+F$. The existence of $Y$ depends on whether  $\+F$ is generated from partitions of $\Omega$, (i.e., if we could find the partitions generating $\+F$, then we have a  $Y$). However, for more general cases I could not define it clealy (may use Lebergue Integral).
 \subsection*{\centering Problem 4}
 
 Suppose that  $\sigma(Y_1)=\+F_1$ and $\sigma(Y_2)=\+F_2$.

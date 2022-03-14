@@ -1,0 +1,31 @@
+INFO:  latexindent.pl version 3.15, 2022-01-21, a script to indent .tex files
+       latexindent.pl lives here: /opt/homebrew/Cellar/latexindent/3.15/libexec/bin/
+       Sun Mar 13 23:55:03 2022
+       Reading input from STDIN
+INFO:  Processing switches:
+INFO:  Directory for backup files and indent.log: .
+INFO:  Perl modules are being loaded from the following directories:
+       /opt/homebrew/Cellar/perl/5.34.0/lib/perl5/5.34.0/FindBin.pm
+       /opt/homebrew/Cellar/latexindent/3.15/libexec/lib/perl5/YAML/Tiny.pm
+       /opt/homebrew/Cellar/perl/5.34.0/lib/perl5/5.34.0/File/Copy.pm
+       /opt/homebrew/Cellar/perl/5.34.0/lib/perl5/5.34.0/File/Basename.pm
+       /opt/homebrew/Cellar/perl/5.34.0/lib/perl5/5.34.0/Getopt/Long.pm
+       /opt/homebrew/Cellar/latexindent/3.15/libexec/lib/perl5/File/HomeDir.pm
+       /opt/homebrew/Cellar/latexindent/3.15/libexec/lib/perl5/darwin-thread-multi-2level/Unicode/GCString.pm
+INFO:  LatexIndent perl modules are being loaded from, for example:
+       /opt/homebrew/Cellar/latexindent/3.15/libexec/lib/perl5/LatexIndent/Document.pm
+INFO:  YAML settings read: defaultSettings.yaml
+       Reading defaultSettings.yaml from /opt/homebrew/Cellar/latexindent/3.15/libexec/bin/defaultSettings.yaml
+INFO:  YAML settings read: indentconfig.yaml or .indentconfig.yaml
+       Home directory is /Users/anye_zhenhaoyu (didn't find either indentconfig.yaml or .indentconfig.yaml)
+       To specify user settings you would put indentconfig.yaml here: /Users/anye_zhenhaoyu/indentconfig.yaml
+       Alternatively, you can use the hidden file .indentconfig.yaml as: /Users/anye_zhenhaoyu/.indentconfig.yaml
+INFO:  Phase 1: searching for objects
+INFO:  Phase 2: finding surrounding indentation
+INFO:  Phase 3: indenting objects
+INFO:  Phase 4: final indentation check
+INFO:  Output routine:
+       Not outputting to file; see -w and -o switches for more options.
+       --------------
+INFO:  Please direct all communication/issues to:
+        https://github.com/cmhughes/latexindent.pl
