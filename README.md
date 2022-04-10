@@ -11,7 +11,13 @@ Course Website: [http://chihaozhang.com/teaching/SP2022spring/index.html](http:/
 - Problem Set: [https://notes.sjtu.edu.cn/s/1mcKYjSe7#fn1](https://notes.sjtu.edu.cn/s/1mcKYjSe7#fn1)
 - The proof of Problem 1.7 is not trivial.
 - We only discuss the discrete case in Problem 2.
+- Score: 98/100
 
 #### Homework 2
 
-- Problem Set: https://notes.sjtu.edu.cn/s/9tLMIpD4c
+- Problem Set: [https://notes.sjtu.edu.cn/s/9tLMIpD4c](https://notes.sjtu.edu.cn/s/9tLMIpD4c)
+- Score: 96/100
+
+#### Homework 3
+
+- Problem Set: [https://notes.sjtu.edu.cn/s/slZVdey54](https://notes.sjtu.edu.cn/s/slZVdey54)
