@@ -23,20 +23,31 @@
 
 \textbf{(1).}
 We just need to prove [F]+[I]$\implies$[PR].
+By \href{http://chihaozhang.com/teaching/SP2022spring/notes/lec4.pdf}{Lecture 4} Proposition 4, we have: if the chain is irreducible and state $i$ is [PR], then all states are [PR].
 
-By [I] and [F], $\forall i\in[n]$, $\exists t_1,t_2,\alpha,\beta$ such that: $\P_i[X_{t_1}=i]=\alpha$ and $\forall j\ne i$, $\P_j[X_{t_2}=i]>\beta$.
-
-Then we have $\exists t$, $\P_i[T_i\le t]>\alpha$ and $\P_j[T_i\le t]>\beta$. Thus
+Now suppose that all states in the chain is [NR]. By \href{http://chihaozhang.com/teaching/SP2022spring/notes/lec5.pdf}{Lecture 5}, $\forall i\in\Omega$
 \[
-	\P_i[T_i<nt] = 1-(1-\alpha)\beta(1-\beta)^n \implies \P_i[T_i<\infty] = 1
-\] and
+	\frac{1}{\=E_j[T_j]}=\lim_{n\to\infty}\frac{1}{n}\sum_{t=1}^nP^t(i,j)=0
+.\] 
+Then
 \[
-	\=E[T_i]<\alpha(1+\cdots+t)+\sum_{n=0}^\infty\beta(1-\alpha)(1-\beta)^n\qty[\frac{t(t+1)}{2}+(n-1)t^2]<\infty
-	.\] Nota Bene: I use $\sum_{n=0}^\infty n\alpha^n<\infty$ where $\abs{\alpha}<1$.
-Finally,
-\[
-	\text{[F]+[A]+[I]}\implies\text{[PR]+[A]+[I]}\implies\text{[S]+[U]+[C]}
-	.\]
+	0=\sum_{j\in\Omega} \frac{1}{\=E_j[T_j]}=\lim_{n\to\infty}\frac{1}{n}\sum_{t=1}^n\sum_{j\in\Omega}P^t(i,j)=1
+,\]
+which leads to a contradiction. Finnaly every states is [PR].
+\\\\
+% By [I] and [F], $\forall i\in[n]$, $\exists t_1,t_2,\alpha,\beta$ such that: $\P_i[X_{t_1}=i]=\alpha$ and $\forall j\ne i$, $\P_j[X_{t_2}=i]>\beta$.
+% 
+% Then we have $\exists t$, $\P_i[T_i\le t]>\alpha$ and $\P_j[T_i\le t]>\beta$. Thus
+% \[
+% 	\P_i[T_i<nt] = 1-(1-\alpha)\beta(1-\beta)^n \implies \P_i[T_i<\infty] = 1
+% \] and
+% \[
+% 	\=E[T_i]<\alpha(1+\cdots+t)+\sum_{n=0}^\infty\beta(1-\alpha)(1-\beta)^n\qty[\frac{t(t+1)}{2}+(n-1)t^2]<\infty
+% 	.\] Nota Bene: I use $\sum_{n=0}^\infty n\alpha^n<\infty$ where $\abs{\alpha}<1$.
+% Finally,
+% \[
+% 	\text{[F]+[A]+[I]}\implies\text{[PR]+[A]+[I]}\implies\text{[S]+[U]+[C]}
+% 	.\]
 \textbf{(2).} Let $Q$ be the transition function of the markov chain on $\Omega^2$. $Q$ has several properties:
 \begin{itemize}
 	\item
@@ -67,7 +78,7 @@ We have proved [PR]+[I]$\implies$[S]+[U]. Now we construct a coupling and update
 	.\]
 By what we've proved in (2), $\forall i,j$, $\exists T$, $(X^t=i,Y^t=j)$ and $X^{t+T}=Y^{t+T}=k$. Thus we have $D_{TV}(\mu,\pi)\le \lim_{t\to\infty}\Pr(X^t\ne Y^t)=0$.
 Then [C] holds for countably infinite chain.
-
+\newpage
 \section*{Problem 2 (A Randomized Algorithm for 3-SAT)}
 \textbf{(1).}
 Fistly we have $\P_{2n^2}\defeq\Pr\qty(\exists t\in[0,2n^2],\,\-{s.t.}Y_t=n)\ge \flatfrac{1}{2}$. Then
