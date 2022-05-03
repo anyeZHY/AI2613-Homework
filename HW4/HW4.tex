@@ -119,21 +119,22 @@ For any given $n$:
 \[
 	\Pr[X\ge k]
 	\le 
-	\frac{2^{2n-k}}{2^{2n}}{n \choose k}
+	\frac{2^{2n-k}}{2^{2n}}{n \choose k}^2
 	\approx
-	\sqrt{\frac{n}{2\pi k(n-k)}}\frac{n^n}{k^k(n-k)^{n-k}}\frac{1}{2^k}
+	{\frac{n}{2\pi k(n-k)}}\qty[\frac{n^n}{k^k(n-k)^{n-k}}]^2\frac{1}{2^k}
 .\]
 Let $k=cn$. We obtain
 \[
     \Pr[X\ge cn]
 	\le
-	\frac{1}{\sqrt{2\pi nc(1-c)}}\qty[\frac{1}{2^cc^c(1-c)^{1-c}}]^n
+	\frac{1}{2\pi nc(1-c)}\qty[\frac{1}{\sqrt{2}^cc^c(1-c)^{1-c}}]^{2n}
 .\] 
-Set $c=0.8$:
+Set $c=0.99$:
 \[
     \Pr[X\ge 0.8n]
 	\le
-	\frac{2}{5\sqrt{2\pi nc(1-c)}}(0.948)^n\rightarrow 0 \text{ when } n\to\infty
+	\frac{51}{\pi n}(0.76)^n
+	\text{ when } n\to\infty
 .\] 
 Thus $c_2$ exists.
 
