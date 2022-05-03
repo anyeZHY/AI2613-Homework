@@ -1,0 +1,150 @@
+% ! Tex program = xelatex
+\documentclass{article}
+% \PassOptionsToPackage{quiet}{fontspec}% (or try silent)
+% 中文
+% \usepackage[UTF8]{ctex}
+
+% For more choices
+% \input{/Users/anye_zhenhaoyu/Desktop/preamble.tex}
+% \input{/Users/anye_zhenhaoyu/Desktop/ln_preamble.tex}
+
+% \input{/path/preamble.tex}
+% \input{/path/ln_preamble.tex}
+
+% On my MAC's Desktop
+\input{../preamble}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+% \tableofcontents
+\title{\vspace{-1cm}Homework 4}
+\maketitle
+\section{Doob's martingale inequality}
+For any given $n$:
+
+Consider the stopping time $\tau=\argmin_{0\le t\le n}\{X_t\ge \alpha\}$ or $\tau=n$ if  $X_t<\alpha$ for all  $0\le t\le n$. Ostensively, $\max_{0\le t\le n}X_t\ge \alpha\iff (\exists k) X_k\ge \alpha \iff X_\tau\ge \alpha$. Thus we have:
+\[
+	\Pr[\max_{0\le t\le n}X_t\ge \alpha]
+	=
+	\Pr[X_\tau\ge \alpha]
+	\le 
+	\frac{\mathbb{E}[X_\tau]}{\alpha}
+\] where the inequality holds by Markov Ineq.
+
+By defination, $\tau\le n$, which means $\mathbb{E}[X_\tau]=\mathbb{E_0}$ by Optional Stopping Theorem.
+Then we obtain $\Pr[\max_{0\le t\le n}X_t\ge \alpha]\le \frac{\mathbb{E}[X_0]}{\alpha}$.
+
+\section{Biased one-dimensional random walk}
+\subsection*{Subproblem 1}
+By defination,
+\[
+	\begin{aligned}
+		\mathbb{E}\qty[S_{t+1}|\overline{Z_{i,n}}]
+		&=
+		\mathbb{E}\qty[S_t+Z_{t+1}+2p-1|\overline{Z_{i,n}}]
+		\\&=
+		S_t+2p-1+(1-p)-p
+		\\&=
+		S_t	
+	\end{aligned}
+.\] 
+\subsection*{Subproblem 2}
+Simmilarly,
+\[
+    \begin{aligned}
+    	\mathbb{E}\qty[P_{t+1}|\overline{Z_{i,n}}]
+		&=
+		\mathbb{E}\qty[P_t\qty(\frac{p}{1-p})^{Z_{t+1}}|\overline{Z_{i,n}}]
+		\\&=
+		P_t\qty[p\times\frac{1-p}{p}+(1-p)\times\frac{p}{1-p}]
+		\\&=
+		P_t
+    \end{aligned}
+.\] 
+
+\subsection*{Subproblem 3}
+We define $p_a=\Pr[X_\tau=a]$ and $p_b=\Pr[X_\tau=b]=1-p_a$.
+
+Now we want to show that $\{S_i\}$ and $\{P_i\}$ satisfy the conditions of OST theorem. Firstly we have 
+\[
+	\Pr(\text{ending within the next $a+b$ steps})\ge \qty[\max(p,1-p)]^{-a-b}
+\] which means $\Pr[\tau<\infty]=1$.
+Dividing the time into consecutive periods in this manner, we have $\mathbb{E}[\tau]<\infty$. Obviously, $\abs{P_i}$ is bounded. Also we have:  $\mathbb{E}[\abs{S_{t+1}-S_t}\+F_t]=p(2-2p)+(1-p)2p=4p(1-p)$.
+
+By OST Thm., $\mathbb{E}[S_\tau]=\mathbb{E}[S_1]$ and  $\mathbb{E}[P_\tau]=\mathbb{E}[P_1]$. These propositions entail
+\[
+	(2p-1)\mathbb{E}[\tau]+bp_b-ap_a=0
+	\qand
+	\qty(\frac{p}{1-p})^{b}p_b+\qty(\frac{p}{1-p})^{-a}p_a=1
+.\] 
+Thus 
+\[
+    p_a=
+	\frac
+	{1-\qty[\flatfrac{p}{(1-p)}]^b}
+	{\qty[\flatfrac{(1-p)}{p}]^{a}-\qty[\flatfrac{p}{(1-p)}]^b}
+	\qand
+	p_b=
+	\frac
+	{\qty[\flatfrac{(1-p)}{p}]^{a}-1}
+	{\qty[\flatfrac{(1-p)}{p}]^{a}-\qty[\flatfrac{p}{(1-p)}]^b}
+.\] 
+Finally,
+\[
+	\mathbb{E}[\tau]=\frac{(a+b)(1-p)^bp^a-ap^{a+b}-b(1-p)^{a+b}}{(2p-1)\qty[(1-p)^{a+b}-p^{a+b}]}
+.\] 
+Remark: $\lim_{p\to\flatfrac{1}{2}}\mathbb{E}[\tau]=ab$.
+
+\section{Longest common subsequence}
+Talk with Yilin Sun and Liyuan Mao.
+\subsection*{Subproblem 1}
+When $n=2$,  
+\[
+	\mathbb{E}[X]
+	=
+	\frac{2\times(2+1+1+0)+2\times(1+2+1+1)}{16}
+	=
+	\frac{9}{8}\ge 2\times\frac{9}{16}
+.\]
+Similarly, if $n=3$, 
+\[
+	\mathbb{E}[X]=\frac{29}{16}\ge 3\times\frac{29}{48}
+.\]
+Since we could divide every strings into continuous subsequences whose length is $2$ or $3$, 
+\[
+	c_1=\frac{9}{16}
+.\]
+For any given $n$:
+\[
+	\Pr[X\ge k]
+	\le 
+	\frac{2^{2n-k}}{2^{2n}}{n \choose k}
+	\approx
+	\sqrt{\frac{n}{2\pi k(n-k)}}\frac{n^n}{k^k(n-k)^{n-k}}\frac{1}{2^k}
+.\]
+Let $k=cn$. We obtain
+\[
+    \Pr[X\ge cn]
+	\le
+	\frac{1}{\sqrt{2\pi nc(1-c)}}\qty[\frac{1}{2^cc^c(1-c)^{1-c}}]^n
+.\] 
+Set $c=0.8$:
+\[
+    \Pr[X\ge 0.8n]
+	\le
+	\frac{2}{5\sqrt{2\pi nc(1-c)}}(0.948)^n\rightarrow 0 \text{ when } n\to\infty
+.\] 
+Thus $c_2$ exists.
+
+\subsection*{Subproblem 2}
+
+Denote function $f(x_1,\cdots,x_n,y_1,\cdots,y_n)$ as the LCS's length of the 2 sequences $\*x$ and $\*y$.
+Obviously $f$ is 1-Lipschitz.
+By McDiarmid's Inequality:
+\[
+	\Pr(\abs{X-\mathbb{E}[X]}\ge t)\le 2e^{-\flatfrac{2t^2}{n}}
+.\] 
+
+\end{document}
+
