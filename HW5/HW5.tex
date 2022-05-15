@@ -78,8 +78,9 @@ where the second inequality holds by $E_m[f(X_1,\cdots,X_n)]$ is monotonically i
 \subsection*{(c)}
 Firstly we define some useful symbols.
 Let $X_i$ be the number of students whose birthday is on day  $i$ ($i\in[365]$). 
-Then $f(X_1,\cdots,X_n)\defeq\mathbbm{1}(\exists i\in[m], X_i\ge 4)$ where $\mathbbm{1}(\cdot)$ is an indicator.
-Hence we could deduce that $\Pr[f(X_1,\cdots,X_n)=1]=\mathbb{E}[f(X_1,\cdots,X_n)]$.
+Then $f(X_1,\cdots,X_m)\defeq\mathbbm{1}(\exists i\in[m], X_i\ge 4)$ where $\mathbbm{1}(\cdot)$ is an indicator.
+Hence we could deduce that $\Pr[f(X_1,\cdots,X_m)=1]=\mathbb{E}[f(X_1,\cdots,X_m)]$.
+And obviously, $\Pr[f(X_1,\cdots,X_m)=1]$ is monotonically increasing in $n$ (the advent of a new student will increase the probability absolutely).
 \[
 	\Pr\Big[\exists i\in[m],X_i\ge 4\Big]
 	\le 
