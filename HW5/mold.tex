@@ -1,0 +1,98 @@
+% ! Tex program = xelatex
+\documentclass{article}
+% \PassOptionsToPackage{quiet}{fontspec}% (or try silent)
+% 中文
+% \usepackage[UTF8]{ctex}
+
+% For more choices
+% \input{/Users/anye_zhenhaoyu/Desktop/preamble.tex}
+% \input{/Users/anye_zhenhaoyu/Desktop/ln_preamble.tex}
+
+% \input{/path/preamble.tex}
+% \input{/path/ln_preamble.tex}
+
+% On my MAC's Desktop
+\input{../preamble}
+
+\graphicspath{{figures/}}
+
+\begin{document}
+% \tableofcontents
+\title{Homework 5}
+\maketitle
+
+\section*{Problem 1}
+
+By defination, $n\sim\-{Pois}(s\lambda)$. Thus
+\[
+	\Pr(\text{achieve his goal})=\Pr(n=1)=s\lambda\exp(-s\lambda)
+.\] 
+Then
+\[
+	s_{\-{opt}}=\argmax_s\Big[s\lambda\exp(-s\lambda)\Big]=\frac{1}{\lambda}
+.\]
+
+
+\section*{Problem 2}
+\subsection*{(a)}
+Apparently
+\[
+    \begin{aligned}
+		&\Pr[X=\lambda+k]\ge \Pr[X=\lambda-k-1]
+		\\[4pt]\iff&
+		\flatfrac{\lambda^{\lambda+k}}{(\lambda+k)!}\ge
+		\flatfrac{\lambda^{\lambda-k-1}}{(\lambda-k-1)!}
+		\\\iff&
+		\lambda^{2k+1}\ge \prod^k_{i=-k}(\lambda+i)
+    \end{aligned}
+\] 
+And the last line holds by the fact that $(\lambda-i)(\lambda+i)\le \lambda^2$.
+Then we have 
+\[
+	2\Pr[X\ge \lambda]\ge \Pr[X\ge \lambda]+\Pr[X<\lambda]=1
+\]
+which entails that $\Pr[X\ge \lambda]\ge \flatfrac{1}{2}$
+\subsection*{(b)}
+Let $\mathbb{E}_m[X]$ denotes the expectation of  $X$ with respect to $m$.
+Intuitively and inspired by Cor.4,
+\[
+    \begin{aligned}
+		\mathbb{E}_m[f(Y_1,\cdots,Y_n)]
+		&=
+		\sum^{\infty}_{k=0} 
+		\mathbb{E}\qty[f(Y_1,\cdots,Y_n)|\sum^n_{i}Y_i=k]\Pr[\sum^n_{i}Y_i=k]
+	    \\&=
+		\sum^{\infty}_{k=0}
+		\mathbb{E}_k\qty[f(X_1,\cdots,X_n)]\Pr[\sum^n_{i}Y_i=k]
+		\\&\ge
+		\sum^{\infty}_{k=m}
+		\mathbb{E}_k\qty[f(X_1,\cdots,X_n)]\Pr[\sum^n_{i}Y_i=k]
+		\\&\ge 
+		\mathbb{E}_m\qty[f(X_1,\cdots,X_n)]\sum^{\infty}_{k=m}\Pr[\sum^n_{i}Y_i=k]
+		\\&\ge 
+		\frac{1}{2}\mathbb{E}_m\qty[f(X_1,\cdots,X_n)]
+    \end{aligned}
+\] 
+where the second inequality holds by $E_m[f(X_1,\cdots,X_n)]$ is monotonically increasing in $m$ and the third inequlity holds by (a).
+
+\subsection*{(c)}
+Firstly we define some useful symbols.
+Let $X_i$ be the number of students whose birthday is on day  $i$ ($i\in[365]$). 
+Then $f(X_1,\cdots,X_n)\defeq\mathbbm{1}(\exists i\in[m], X_i\ge 4)$ where $\mathbbm{1}(\cdot)$ is an indicator.
+Hence we could deduce that $\Pr[f(X_1,\cdots,X_n)=1]=\mathbb{E}[f(X_1,\cdots,X_n)]$.
+\[
+	\Pr\Big[\exists i\in[m],X_i\ge 4\Big]
+	\le 
+	2\Pr\Big[\exists i\in[m],Y_i\ge 4\Big]=2\qty(1-\Pr[Y_1<4]^{365})
+.\] 
+Trivilly,
+\[
+	\Pr[Y_1<4]=\qty(1+\lambda+\frac{\lambda^2}{2}+\frac{\lambda^3}{6})\exp(-\lambda)
+.\] 
+When $\lambda=\flatfrac{50}{365}$
+\[
+    \Pr\Big[\exists i\in[m],X_i\ge 4\Big]
+	\le 9.58\times 10^{-3}\le 1\%
+.\] 
+\end{document}
+

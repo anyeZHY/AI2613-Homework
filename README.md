@@ -21,7 +21,13 @@ Course Website: [http://chihaozhang.com/teaching/SP2022spring/index.html](http:/
 #### Homework 3
 
 - Problem Set: [https://notes.sjtu.edu.cn/s/slZVdey54](https://notes.sjtu.edu.cn/s/slZVdey54)
+- Score: 99/100
 
 #### Homework 4
 
 - Problem Set: [https://notes.sjtu.edu.cn/s/olYW_AbUL](https://notes.sjtu.edu.cn/s/olYW_AbUL)
+
+### Homework 5
+
+- Problem Set: [https://notes.sjtu.edu.cn/s/10de4nBGX](https://notes.sjtu.edu.cn/s/10de4nBGX)
+- Trivial
