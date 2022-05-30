@@ -31,3 +31,4 @@ Course Website: [http://chihaozhang.com/teaching/SP2022spring/index.html](http:/
 
 - Problem Set: [https://notes.sjtu.edu.cn/s/10de4nBGX](https://notes.sjtu.edu.cn/s/10de4nBGX)
 - Trivial
+- Score: 99/100
