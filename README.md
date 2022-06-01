@@ -1,6 +1,6 @@
 ## AI2613 SJTU Stochastic Processes Homework
 
-Teacher: [Chihao Zhang](http://Chihaozhang.com)
+Instructor: [Chihao Zhang](http://Chihaozhang.com)
 
 Course Website: [http://chihaozhang.com/teaching/SP2022spring/index.html](http://chihaozhang.com/teaching/SP2022spring/index.html)
 
@@ -26,8 +26,9 @@ Course Website: [http://chihaozhang.com/teaching/SP2022spring/index.html](http:/
 #### Homework 4
 
 - Problem Set: [https://notes.sjtu.edu.cn/s/olYW_AbUL](https://notes.sjtu.edu.cn/s/olYW_AbUL)
+- Score: 100/100
 
-### Homework 5
+#### Homework 5
 
 - Problem Set: [https://notes.sjtu.edu.cn/s/10de4nBGX](https://notes.sjtu.edu.cn/s/10de4nBGX)
 - Trivial
