@@ -6,6 +6,10 @@ Course Website: [http://chihaozhang.com/teaching/SP2022spring/index.html](http:/
 
 ### Brief Introduction
 
+#### Cheat Sheet
+
+I have obtained permission from the instructor for sharing.
+
 #### Homework 1
 
 - Problem Set: [https://notes.sjtu.edu.cn/s/1mcKYjSe7#fn1](https://notes.sjtu.edu.cn/s/1mcKYjSe7#fn1)
